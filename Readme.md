@@ -1,7 +1,7 @@
 # Личный проект «Readme»
 
 * Студент: [Artem Zhuravlev](https://up.htmlacademy.ru/php/12/user/1963365).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Палян](https://htmlacademy.ru/profile/id1231107).
 
 ---
 
