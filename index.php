@@ -14,7 +14,7 @@ $array = [
     [
         "title" => "Игра престолов",
         "type" => "post-text",
-        "content" => "Не могу дождаться начала финального сезона своего любимого сериала!",
+        "content" => "Озеро Байкал – огромное древнее озеро в горах Сибири к северу от монгольской границы. Байкал считается самым глубоким озером в мире. Он окружен сетью пешеходных маршрутов, называемых Большой байкальской тропой. Деревня Листвянка, расположенная на западном берегу озера, – популярная отправная точка для летних экскурсий. Зимой здесь можно кататься на коньках и собачьих упряжках.",
         "user" => "Владик",
         "avatar" => "userpic.jpg"
     ],
@@ -40,6 +40,25 @@ $array = [
         "avatar" => "userpic.jpg"
     ]
 ];
+
+
+function cutText($text)
+{
+    $textArr = explode(" ", $text);
+    $countOfArr = 0;
+    $newTextArr = [];
+    foreach ($textArr as $val) {
+        $newTextArr[] = $val;
+        $countOfArr += strlen($val);
+        if ($countOfArr > 300) {
+            return "<p>" . implode(" ", $newTextArr) . "...</p>" . '<div class="post-text__more-link-wrapper">
+                        <a class="post-text__more-link" href="#">Читать далее</a>
+                    </div>';
+        }
+    }
+    return "<p>" . implode(" ", $newTextArr) . "</p>";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -370,7 +389,7 @@ $array = [
                         <?php endif; ?>
 
                         <?php if ($val["type"] == "post-text"): ?>
-                            <p><?= $val["content"]; ?></p>
+                            <?= cutText($val["content"]); ?>
                         <?php endif; ?>
 
 
